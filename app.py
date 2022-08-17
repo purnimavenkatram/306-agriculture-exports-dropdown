@@ -57,7 +57,7 @@ def make_figure(varname):
     mycolorbartitle = "Count"
 
     data=go.Choropleth(
-        locations=df['ioc-code'], # Spatial coordinates
+        locations=df['ioc_code'], # Spatial coordinates
         locationmode = 'country names', # set of locations match entries in `locations`
         z = df[varname].astype(float), # Data to be color-coded
         colorscale = mycolorscale,
