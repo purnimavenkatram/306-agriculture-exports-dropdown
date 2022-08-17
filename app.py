@@ -11,13 +11,13 @@ tabtitle = 'Olympic Medals'
 sourceurl = 'https://plot.ly/python/choropleth-maps/'
 githublink = 'https://github.com/purnimavenkatram/306-agriculture-exports-dropdown'
 # here's the list of possible columns to choose from.
-list_of_columns =['summer_participations','summer_gold','summer_silver','summer_bronze','summer_total','winter_gold','winter_silver','winter_total']
-
+list_of_columns =['summer_participations','summer_gold','summer_silver','summer_bronze','summer_total','winter_gold','winter_silver','winter_bronze','winter_total','total_participations','total_gold','total_silver','total_bronze']
 
 ########## Set up the chart
 
 import pandas as pd
 df = pd.read_csv('assets/olympics_medals_country_wise.csv')
+df=df.rename(columns={'countries ':'countries','ioc_code ':'ioc_code'})
 
 ########### Initiate the app
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
