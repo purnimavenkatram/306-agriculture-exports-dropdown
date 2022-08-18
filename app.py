@@ -17,7 +17,10 @@ list_of_columns =['summer_participations','summer_gold','summer_silver','summer_
 import pandas as pd
 df = pd.read_csv('assets/olympics_medals_country_wise.csv')
 df=df.rename(columns={'countries ':'countries','ioc_code ':'ioc_code'})
-
+df['summer_gold']=df['summer_gold'].str.replace(',','')
+df['summer_total']=df['summer_total'].str.replace(',','')
+df['total_gold']=df['total_gold'].str.replace(',','')
+df['total_total']=df['total_gold'].str.replace(',','')
 ########### Initiate the app
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
@@ -58,7 +61,7 @@ def make_figure(varname):
     data=go.Choropleth(
         locations=df['countries'], # Spatial coordinates
         locationmode = 'country names', # set of locations match entries in `locations`
-        z = df[varname].str.replace(',','').astype(float), # Data to be color-coded
+        z = df[varname].astype(float), # Data to be color-coded
         colorscale = mycolorscale,
         colorbar_title = mycolorbartitle,
     )
